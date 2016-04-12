@@ -13,6 +13,7 @@ public class WorldController : MonoBehaviour {
             Destroy(this.gameObject);
             return;
         }
+        Room.setupRoomPrefabs();
         instance = this;
         world = new World();
 	    

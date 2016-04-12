@@ -56,16 +56,6 @@ public class World {
             {
                 type = Type.Grass;
             }
-            else if (tile.y == 4 && tile.x < 53 && tile.x > 49) {
-                type = Type.ElementryClassRoom;
-                if (tile.x == 51)
-                {
-                    tile.Index = 1;
-                }
-                else if (tile.x == 52) {
-                    tile.Index = 2;
-                }
-            }
             tile.Type = type;
         }
     }
