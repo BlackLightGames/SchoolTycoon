@@ -3,11 +3,16 @@ using System.Collections;
 
 public class WorldController : MonoBehaviour {
 
-    World world;
+    public World world;
     public static WorldController instance;
 
 	// Use this for initialization
 	void Start () {
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         instance = this;
         world = new World();
 	    

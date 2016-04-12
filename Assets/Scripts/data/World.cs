@@ -28,4 +28,46 @@ public class World {
 
     }
 
+    public void RandomizeWorld()
+    {
+        foreach (Tile tile in tiles) {
+            Type rand = GetRandomEnum<Type>();
+            tile.Type = rand;
+        }
+    }
+
+    static T GetRandomEnum<T>()
+    {
+        System.Array A = System.Enum.GetValues(typeof(T));
+        T V = (T)A.GetValue(UnityEngine.Random.Range(0, A.Length));
+        return V;
+    }
+
+    public void newWorld() {
+        foreach (Tile tile in tiles)
+        {
+            Type type = Type.Sky;
+            tile.Index = 0;
+            if (tile.y < 3)
+            {
+                type = Type.Dirt;
+            }
+            else if (tile.y == 3)
+            {
+                type = Type.Grass;
+            }
+            else if (tile.y == 4 && tile.x < 53 && tile.x > 49) {
+                type = Type.ElementryClassRoom;
+                if (tile.x == 51)
+                {
+                    tile.Index = 1;
+                }
+                else if (tile.x == 52) {
+                    tile.Index = 2;
+                }
+            }
+            tile.Type = type;
+        }
+    }
+
 }

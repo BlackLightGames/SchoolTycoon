@@ -2,16 +2,28 @@
 using System.Collections;
 using System;
 
-public enum Type{ Grass, Sky, Lobby, ElementryClassRoom }
+public enum Type{ Dirt, Grass, Sky, Lobby, ElementryClassRoom }
 
 public class Tile {
 
     public int x;
     public int y;
+    private int index = 0;
+    public int Index {
+        get {
+            return index;
+        }
+
+        set {
+            index = value;
+            if (onTileChanged != null)
+                onTileChanged(this);
+        }
+    }
     public World world;
     Action<Tile> onTileChanged;
 
-    private Type type;
+    private Type type = Type.Sky;
     public Type Type {
         get {
             return type;
@@ -37,7 +49,5 @@ public class Tile {
     public void UnregisterOnTileChanged(Action<Tile> cb) {
         onTileChanged -= cb;
     }
-
-
 
 }
