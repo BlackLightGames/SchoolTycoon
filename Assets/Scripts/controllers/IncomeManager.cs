@@ -4,7 +4,7 @@ using System.Collections;
 public class IncomeManager : MonoBehaviour {
 
     float incomeTimer = 0;
-    float incomeCooldown = 60;
+    float incomeCooldown = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,7 @@ public class IncomeManager : MonoBehaviour {
             foreach (string key in Room.rooms.Keys) {
                 float amount = Room.rooms[key];
                 float amountPerRoom = Room.roomPrefabs[key].incomeperMin;
-                GameData.instance.money += amount * amountPerRoom;
+                GameData.instance.money += (amount * amountPerRoom)/60;
                 Debug.Log("updated income");
             }
         }

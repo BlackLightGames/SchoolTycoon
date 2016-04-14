@@ -21,6 +21,9 @@ public class GameData : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        if (Input.GetKey("`") && UnityEngine.Debug.isDebugBuild)
+        {
+            money += 1000;
+        }
+    }
 }

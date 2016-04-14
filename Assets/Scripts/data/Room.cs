@@ -26,7 +26,10 @@ public class Room {
     }
 
     public static void setupRoomPrefabs() {
-        roomPrefabs.Add("ElementryClassRoom",new Room("ElementryClassRoom", 3, 1, Type.ElementryClassRoom, 100, 20));
+        roomPrefabs.Add("ElementryClassRoom",new Room("ElementryClassRoom", 3, 1, Type.ElementryClassRoom, 75, 50));
+        roomPrefabs.Add("ElementryArtRoom", new Room("ElementryArtRoom", 4, 1, Type.ElementryArtRoom, 150, 75));
+        roomPrefabs.Add("ElementryComputerLab", new Room("ElementryComputerLab", 4, 1, Type.ElementryComputerLab, 150, 75));
+        roomPrefabs.Add("ElementryGym", new Room("ElementryGym", 4, 2, Type.ElementryGym, 150, 75));
     }
 
 }

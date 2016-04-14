@@ -13,6 +13,6 @@ public class UIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        moneyText.text = "$" + GameData.instance.money;
+        moneyText.text = "$" + GameData.instance.money.ToString("F2");
 	}
 }

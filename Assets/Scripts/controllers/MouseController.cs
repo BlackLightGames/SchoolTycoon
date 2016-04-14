@@ -84,9 +84,9 @@ public class MouseController : MonoBehaviour {
                 else if (tileType == Type.Structure)
                 {
                     Tile tBellow = WorldController.instance.world.getTileAt((int)(Mathf.FloorToInt(currentPosition.x + .5f)), (int)(Mathf.FloorToInt(currentPosition.y + .5f) - 1));
-                    if (tBellow != null && (tBellow.Type != Type.Grass && tBellow.Type != Type.Dirt && tBellow.Type != Type.Sky) && t.Type == Type.Sky && GameData.instance.money >= 50)
+                    if (tBellow != null && (tBellow.Type != Type.Grass && tBellow.Type != Type.Dirt && tBellow.Type != Type.Sky) && t.Type == Type.Sky && GameData.instance.money >= 30)
                     {
-                        GameData.instance.money -= 50;
+                        GameData.instance.money -= 30;
                         canPlace = true;
                     }
                 }

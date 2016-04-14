@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public enum Type { Dirt, Grass, Sky, Lobby, ElementryClassRoom, Foundation, Structure }
+public enum Type { Dirt, Grass, Sky, Lobby, ElementryClassRoom, Foundation, Structure, ElementryArtRoom, ElementryComputerLab, ElementryGym }
 
 public class Tile {
 
