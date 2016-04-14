@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public enum Type{ Dirt, Grass, Sky, Lobby, ElementryClassRoom }
+public enum Type { Dirt, Grass, Sky, Lobby, ElementryClassRoom, Foundation, Structure }
 
 public class Tile {
 
@@ -22,6 +22,8 @@ public class Tile {
     }
     public World world;
     Action<Tile> onTileChanged;
+    public int roomX;
+    public int roomY;
 
     private Type type = Type.Sky;
     public Type Type {
@@ -41,6 +43,8 @@ public class Tile {
         this.y = y;
         this.world = world;
     }
+
+
 
     public void RegisterOnTileChanged(Action<Tile> cb) {
         onTileChanged += cb;
