@@ -48,7 +48,7 @@ public class MouseController : MonoBehaviour {
                         }
                     }
                 }
-                if (canPlace)
+                if (canPlace && GameData.instance.money >= selectedRoom.cost)
                 {
                     int index = 0;
                     for (int y = 0; y < selectedRoom.height; y++)
@@ -64,6 +64,11 @@ public class MouseController : MonoBehaviour {
                             index++;
                         }
                     }
+                    GameData.instance.money -= selectedRoom.cost;
+                    if(Room.rooms.ContainsKey(selectedRoom.name))
+                        Room.rooms[selectedRoom.name] += 1;
+                    else
+                        Room.rooms[selectedRoom.name] = 1;
                 }
             }
             else if (mode == 2)
@@ -71,15 +76,17 @@ public class MouseController : MonoBehaviour {
                 Vector3 currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 bool canPlace = false;
                 Tile t = WorldController.instance.world.getTileAt((int)(Mathf.FloorToInt(currentPosition.x + .5f)), (int)(Mathf.FloorToInt(currentPosition.y + .5f)));
-                if (tileType == Type.Foundation && t.Type == Type.Grass)
+                if (tileType == Type.Foundation && t.Type == Type.Grass && GameData.instance.money >= 10)
                 {
+                    GameData.instance.money -= 10;
                     canPlace = true;
                 }
                 else if (tileType == Type.Structure)
                 {
                     Tile tBellow = WorldController.instance.world.getTileAt((int)(Mathf.FloorToInt(currentPosition.x + .5f)), (int)(Mathf.FloorToInt(currentPosition.y + .5f) - 1));
-                    if (tBellow != null && (tBellow.Type != Type.Grass && tBellow.Type != Type.Dirt && tBellow.Type != Type.Sky) && t.Type == Type.Sky)
+                    if (tBellow != null && (tBellow.Type != Type.Grass && tBellow.Type != Type.Dirt && tBellow.Type != Type.Sky) && t.Type == Type.Sky && GameData.instance.money >= 50)
                     {
+                        GameData.instance.money -= 50;
                         canPlace = true;
                     }
                 }
@@ -121,6 +128,7 @@ public class MouseController : MonoBehaviour {
                     }
                     if (isRoom)
                     {
+                        Room.rooms[selectedRoom.name] -= 1;
                         int startX = t.roomX;
                         int startY = t.roomY;
                         for (int y = 0; y < room.height; y++)
